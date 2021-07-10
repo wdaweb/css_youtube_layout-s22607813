@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube_layout</title>
+</head>
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      list-style: none;
+      font-family: '微軟正黑體';
+      font-size: 0.9rem;
+    }
+
+    html,
+    body {
+      height: 100%;
+    }
+
+    #main {
+      width: 100%;
+      height: 100%;
+    }
+
+    #nav {
+      width: 100%;
+      height: 5%;
+      background-color: #fff;
+    }
+
+    .start {
+      width: 10%;
+      height: 100%;
+      margin-left: 2%;
+      margin-right: 20%;
+      float: left;
+    }
+
+    #bar {
+      width: 25%;
+      height: 100%;
+      background:url(./images/bars.png)no-repeat center/cover;
+    }
+
+    #youtube {
+      width: 75%;
+      height: 100%;
+      background: url(./images/youtube_logo.png)no-repeat center/cover;
+    }
+    .center {
+      width: 34%;
+      height: 100%;
+      position: relative;
+      float: left;
+    }
+
+    #search {
+      width: 80%;
+      height: 80%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    #search_logo {
+      width: 10%;
+      height: 80%;
+      border: 1px solid #666;
+      background-color: rgb(247, 244, 244);
+      position: absolute;
+      text-align: center;
+      left: 80%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    #mic {
+      width: 10%;
+      height: 80%;
+      position: absolute;
+      text-align: center;
+      left: 90%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    .end {
+      width: 12%;
+      height: 100%;
+      margin-right: 2%;
+      position: relative;
+      float: right;
+    }
+
+    #th {
+      width: 20%;
+      height: 80%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      text-align: center;
+    }
+
+    #ellipsis {
+      width: 20%;
+      height: 80%;
+      position: absolute;
+      left: 20%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+      text-align: center;
+    }
+
+    #login {
+      width: 60%;
+      height: 80%;
+      border: 1px solid blue;
+      position: absolute;
+      left: 40%;
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+
+    #login_icon {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      position: absolute;
+    }
+
+    #login_text {
+      width: 50%;
+      height: 100%;
+      color: blue;
+      position: absolute;
+      left: 50%;
+    }
+
+    #login_text span {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1vmin;
+    }
+
+    #sidebar {
+      width: 13%;
+      height: 95%;
+      float: left;
+    }
+
+    .sidebar_selection div:hover {
+      background: rgb(235, 233, 233);
+      cursor: pointer;
+    }
+
+    .sidebar_selection div {
+      height: 4vh;
+      margin: 0 10px;
+    }
+
+    .sidebar_selection span {
+      line-height: 4vh;
+    }
+
+    .button {
+      width: 40%;
+      height: 4vh;
+      line-height: 4vh;
+      margin: 30px 0 20px 20px;
+      border: 1px solid blue;
+      position: relative;
+    }
+
+    #button_icon {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+      position: absolute;
+    }
+
+    #button_text {
+      width: 50%;
+      height: 100%;
+      color: blue;
+      position: absolute;
+      left: 50%;
+    }
+
+    #button_text span {
+      position: absolute;
+      top: 50%;
+      left: 10%;
+      transform: translateY(-50%);
+      font-size: 1vmin;
+    }
+
+    .button:hover {
+      cursor: pointer;
+    }
+
+    #footer {
+      color: #666;
+    }
+
+    #footer span:hover {
+      cursor: pointer;
+    }
+
+    #footer_up{
+      margin: 20px 0;
+    }
+
+    #footer_up div {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    #footer_down div {
+      margin: 0 10px;
+      display: inline-block;
+    }
+
+    #container {
+      width: 87%;
+      height: 95%;
+      float: right;
+      background-color: #f9f9f9;
+    }
+
+    #videos_layout {
+      width: 80%;
+      height: 100%;
+      margin: auto;
+    }
+
+    .video {
+      width: 23%;
+      height: 40%;
+      margin: 1.6% 0% 1.6% 1.5%;
+      display: inline-block;
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 50%;
+      background: lemonchiffon;
+    }
+
+    .thumbnail img {
+      display: inline-block;
+    }
+
+    .title {
+      width: 100%;
+      height: 25%;
+      position: relative;
+    }
+
+    .title_img {
+      width: 15%;
+      height:100%;
+      position: absolute;
+    }
+
+    .title_img_round {
+      width: 2vw;
+      height: 2vw;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .title_name {
+      width: 85%;
+      height:100%;
+      position: absolute;
+      left: 15%;
+    }
+
+    .title_name span {
+      width: 100%;
+      display: block;
+      font-size: 2vmin;
+      overflow:hidden;
+      white-space: normal;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      position: absolute;
+      left: 1%;
+      top: 50%;
+      transform: translateY(-50%);
+      color: black;
+    }
+
+    .channel_name {
+      width: 100%;
+      height: 10%;
+      position: relative;
+    }
+
+    .channel_name span {
+      position: absolute;
+      top: 50%;
+      left: 15%;
+      transform: translateY(-50%);
+      font-size: 1.5vmin;
+      color: #666
+    }
+
+    .views {
+      width: 100%;
+      height: 10%;
+      position: relative;
+    }
+
+    .views span {
+      position: absolute;
+      left: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5vmin;
+      color: #666
+    }
+
+    hr {
+      width: 90%;
+      margin: 10px 0;
+    }
+
+    .inline_block {
+      display: inline-block;
+    }
+
+    .float-left {
+      float: left;
+    }
+
+    .float-right {
+      float: right;
+    }
+
+    #no_hover:hover {
+      background-color: white;
+      cursor: auto;
+    }
+
+    #no_hover2:hover {
+      background-color: white;
+      cursor: auto;
+    }
+
+    .center_center {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%)
+    }
+</style>
+<body>
+    <div id="main">
+      <div id="nav">
+        <div class="start">
+          <div id ="bar" class="float-left"></div>
+          <div id ="youtube" class="float-left"></div>
+          <div></div>
+        </div>
+        <div class="center">
+          <input id="search" type="text" name="" id="" placeholder="    搜尋">
+          <div id="search_logo"><img src="./images/searcj.png" height="100%"></div>
+          <div id="mic"><img src="./images/mic.png"height="100%"></div>
+        </div>
+        <div class="end">
+          <div id="th"><img src="./images/th.png"height="100%"></div>
+          <div id="ellipsis"><img src="./images/ellipsis.png"height="100%"></div>
+          <div id="login">
+            <div id="login_icon"><img src="./images/user.png"height="100%"></div>
+            <div id="login_text"><span class="">登入</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="sidebar">
+        
+        <div class="button">
+          <div id="button_icon"><img src="./images/user.png"height="100%"></div>
+          <div id="button_text"><span class="center_center">登入</span></div>
+        </div>
+        <hr>
+        <div class="sidebar_selection">
+          <div id="no_hover">
+            <span>YOUTUBE 精選</span>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/music.png"height="100%"></div>
+            <div class="float-left"><span >音樂</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/trophy.png"height="100%"></div>
+            <div class="float-left"><span >體育</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/game.png"height="100%"></div>
+            <div class="float-left"><span >遊戲</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/movie.png"height="100%"></div>
+            <div class="float-left"><span >電影</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/newspaper.png"height="100%"></div>
+            <div class="float-left"><span >新聞</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/broadcast.png"height="100%"></div>
+            <div class="float-left"><span >直播</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/360.png"height="100%"></div>
+            <div class="float-left"><span >360 度影片</span></div>
+          </div>
+          <hr>
+          <div>
+            <div class="float-left"><img src="./images/plus.png"height="100%"></div>
+            <div class="float-left"><span >瀏覽頻道</span></div>
+          </div>
+          <hr>
+          <div id="no_hover2">
+            <span>更多 YOUTUBE 功能</span>
+          </div>
+          
+          <div>
+            <div class="float-left"><img src="./images/youtube.png"height="100%"></div>
+            <div class="float-left"><span >YouTube Premium</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/broadcast2.png"height="100%"></div>
+            <div class="float-left"><span >直播</span></div>
+          </div>
+          <hr>
+          <div>
+            <div class="float-left"><img src="./images/setting.png"height="100%"></div>
+            <div class="float-left"><span >設定</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/flags.png"height="100%"></div>
+            <div class="float-left"><span >檢舉紀錄</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/question.png"height="100%"></div>
+            <div class="float-left"><span >說明</span></div>
+          </div>
+          <div>
+            <div class="float-left"><img src="./images/advise.png"height="100%"></div>
+            <div class="float-left"><span >提供意見</span></div>
+          </div>
+        </div>
+        <hr>
+        <div id="footer">
+          <div id="footer_up">
+            <div><span>簡介</span></div>
+            <div><span>媒體</span></div>
+            <div><span>版權</span></div>
+            <div><span>與我們聯絡</span></div>
+            <div><span>創作者</span></div>
+            <div><span>廣告</span></div>
+            <div><span>開發人員</span></div>
+          </div>
+          <div id="footer_down">
+            <div><span>條款</span></div>
+            <div><span>隱私權</span></div>
+            <div><span>政策與安全性</span></div>
+            <div><span>YouTube運作方式</span></div>
+            <div><span>測試新功能</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="container">
+        <div id="videos_layout">
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail01.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail01.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>Scratching Lilly's Sweet Spot</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>Vinnie Daino</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：6,106次．2019年10月22日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail02.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail02.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>Cat breathing with mouth open after hiding under the blanket during summer </span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>Chubby Cheepu</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：7,433次．2021年3月4日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail03.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail03.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>『生活常用日文單字 425個』/ 井上老師</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>井上一宏</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：92,889次．2021年6月12日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail04.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail04.png" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>你喜歡的顏色說明什麼性格？ 顏色的讀心術「色彩心理學」！【生活】 | 維思維</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>維思維WeisWay</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：516,964次．首播日期：2021年1月19日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail05.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail05.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>再也沒有腰間的贅肉 (中文字幕)</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>Fitting Room TW</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：1,328,913次．2017年6月12日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail06.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail06.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>佩德艾利亞斯 Peder Elias ft. Hkeem / 愛上妳 Loving You Girl (中字MV-不插電版)</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>台灣索尼音樂 Sony Music Taiwan</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：3,609次．2021年7月9日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail07.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail06.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>欅坂46 /黑羊 (中文字幕版)</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>台灣索尼音樂 Sony Music Taiwan</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：460,618次．2019年3月12日</span>
+            </div>
+          </div>
+          <div class="video">
+            <div class="thumbnail">
+              <img src="./images/thumbnail08.jpg" width="100%" height="100%">
+            </div>
+            <div class="title">
+              <div class="title_img">
+                <div class="title_img_round center_center">
+                  <img src="./images/user_thumbnail08.jpg" width="100%" height="100%">
+                </div>
+              </div>
+              <div class="title_name">
+                <span>YOASOBI「夜に駆ける」 Official Music Video</span>
+              </div>
+            </div>
+            <div class="channel_name">
+              <span>Ayase / YOASOBI</span>
+            </div>
+            <div class="views">
+              <span>觀看次數：239,582,107次．首播日期：2019年11月16日</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
